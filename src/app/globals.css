@@ -1,26 +1,176 @@
+@import url("https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=general-sans@300,400,500,600,700&display=swap");
 @import "tailwindcss";
 
+@theme {
+  --color-brand-bg: var(--brand-bg);
+  --color-brand-surface: var(--brand-surface);
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-border: var(--brand-border);
+  
+  --font-satoshi: "Satoshi", var(--font-sans);
+  --font-general: "General Sans", var(--font-sans);
+  --font-inter: var(--font-sans);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --brand-bg: #FFFFFF;
+  --brand-surface: #FFFFFF;
+  --brand-primary: #000000;
+  --brand-secondary: #55555B;
+  --brand-accent: #000000;
+  --brand-border: rgba(0, 0, 0, 0.08);
+
+  --background: var(--brand-bg);
+  --foreground: var(--brand-primary);
+  
+  --shadow-premium-soft: 0 4px 30px rgba(0, 0, 0, 0.015), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-clay: 0 10px 30px -10px rgba(0, 0, 0, 0.03), inset 0 2px 4px rgba(255, 255, 255, 0.9), inset 0 -2px 6px rgba(0, 0, 0, 0.02);
+  --shadow-clay-hover: 0 20px 45px -12px rgba(0, 0, 0, 0.08), inset 0 2px 4px rgba(255, 255, 255, 0.95), inset 0 -2px 6px rgba(0, 0, 0, 0.02);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+:root.dark {
+  --brand-bg: #070708;
+  --brand-surface: #101012;
+  --brand-primary: #FFFFFF;
+  --brand-secondary: #909095;
+  --brand-accent: #FFFFFF;
+  --brand-border: rgba(255, 255, 255, 0.08);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: var(--brand-bg);
+  --foreground: var(--brand-primary);
+  
+  --shadow-premium-soft: 0 4px 30px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-clay: 0 10px 30px -10px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.05), inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+  --shadow-clay-hover: 0 20px 45px -12px rgba(255, 255, 255, 0.04), inset 0 1px 2px rgba(255, 255, 255, 0.1), inset 0 -1px 2px rgba(0, 0, 0, 0.8);
 }
 
 body {
-  background: var(--background);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Selection Highlight */
+::selection {
+  background-color: var(--brand-accent);
+  color: var(--brand-bg);
+}
+
+/* UI Utilities */
+@utility clay-card {
+  background-color: var(--color-brand-surface);
+  border: 1px solid var(--color-brand-border);
+  border-radius: 24px;
+  box-shadow: var(--shadow-clay);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@utility clay-card-hover {
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-clay-hover);
+    border-color: var(--color-brand-primary);
+  }
+}
+
+@utility glass-card {
+  background-color: var(--color-brand-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--color-brand-border);
+}
+
+@utility glass-header {
+  background-color: var(--color-brand-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-brand-border);
+}
+
+@utility premium-shadow {
+  box-shadow: var(--shadow-premium-soft);
+}
+
+/* Hide default scrollbar when Lenis is active (optional but matches elite UX) */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Text Mask Reveal Animations */
+.reveal-text-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.reveal-text-line {
+  display: block;
+}
+
+/* Premium Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAFAF8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(181, 138, 75, 0.5);
+}
+
+/* ─── Marquee Animations ─────────────────────────────────────────────── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes marquee-right {
+  0%   { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee-left {
+  animation: marquee-left 28s linear infinite;
+}
+
+.animate-marquee-right {
+  animation: marquee-right 22s linear infinite;
+}
+
+@keyframes marquee-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical 16s linear infinite;
 }
