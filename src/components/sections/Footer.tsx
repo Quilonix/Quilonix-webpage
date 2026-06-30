@@ -154,14 +154,14 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Compliance */}
+            {/* Resources */}
             <div className="flex flex-col gap-4 col-span-2 sm:col-span-1">
-              <span className="text-[10px] font-bold font-satoshi tracking-wider uppercase text-brand-primary">COMPLIANCE</span>
+              <span className="text-[10px] font-bold font-satoshi tracking-wider uppercase text-brand-primary">RESOURCES</span>
               <div className="flex flex-col gap-2.5 text-xs text-brand-secondary font-inter font-light">
-                <span>ISO 27001 Certified</span>
-                <span>GDPR / HIPAA Compliant</span>
-                <span>WCAG 2.2 AA Audited</span>
-                <span>Swiss Data Hosting</span>
+                <a href="https://github.com/Quilonix" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-300">Open Source (GitHub)</a>
+                <a href="https://huggingface.co/Quilonix" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-300">Models (Hugging Face)</a>
+                <a href="https://play.google.com/store/apps/dev?id=8262374975871504599" target="_blank" rel="noopener noreferrer" className="hover:text-brand-accent transition-colors duration-300">Android Applications</a>
+                <a href="mailto:quilonix.ai@gmail.com" className="hover:text-brand-accent transition-colors duration-300">Support & Inquiries</a>
               </div>
             </div>
 
