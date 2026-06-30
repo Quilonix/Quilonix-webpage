@@ -13,13 +13,15 @@ export default function SmoothScrollProvider({
   useEffect(() => {
     // Premium smooth scrolling configuration
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.6, // slightly longer for buttery inertia
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // premium exponential easing
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.95, // slightly dampened for high-end cinematic feel
-      touchMultiplier: 1.5,
+      wheelMultiplier: 1.1, // optimized desktop feel
+      smoothTouch: true, // explicitly enable Lenis on mobile/touch screens
+      touchMultiplier: 2.2, // increased multiplier so mobile users don't feel "heavy" scrolling
+      touchInertiaMultiplier: 1.5, // buttery inertia release on mobile
     });
 
     lenisRef.current = lenis;
