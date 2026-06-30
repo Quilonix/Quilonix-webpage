@@ -194,7 +194,7 @@ export default function Footer() {
           <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-8 text-[11px] font-satoshi text-brand-secondary justify-center sm:justify-end">
             <div className="flex items-center gap-4">
               <Link href="/terms" className="hover:text-brand-accent transition-colors duration-300">Terms & Conditions</Link>
-              <Link href="/terms" className="hover:text-brand-accent transition-colors duration-300">Privacy Policy</Link>
+              <Link href="/privacy" className="hover:text-brand-accent transition-colors duration-300">Privacy Policy</Link>
             </div>
             <span>&copy; {new Date().getFullYear()} QUILONIX. All rights reserved.</span>
             <button
