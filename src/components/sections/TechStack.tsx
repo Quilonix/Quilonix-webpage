@@ -268,11 +268,22 @@ function MarqueeTrack({
 }
 
 export default function TechStack() {
+  const [activeIndex, setActiveIndex] = useState(2);
   const [hoveredTool, setHoveredTool] = useState<(typeof AI_TOOLS)[0] | null>(null);
   const [lockedTool, setLockedTool] = useState<(typeof AI_TOOLS)[0] | null>(null);
 
-  const displayedTool = hoveredTool ?? lockedTool ?? AI_TOOLS[2];
-  const activeId = hoveredTool?.id ?? lockedTool?.id ?? null;
+  React.useEffect(() => {
+    if (hoveredTool || lockedTool) return;
+
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => (prev + 1) % AI_TOOLS.length);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [hoveredTool, lockedTool]);
+
+  const displayedTool = hoveredTool ?? lockedTool ?? AI_TOOLS[activeIndex];
+  const activeId = hoveredTool?.id ?? lockedTool?.id ?? AI_TOOLS[activeIndex].id;
 
   const handleClick = (tool: (typeof AI_TOOLS)[0]) => {
     setLockedTool((prev) => (prev?.id === tool.id ? null : tool));
