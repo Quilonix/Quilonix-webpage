@@ -136,10 +136,10 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <span className="text-[10px] font-bold font-satoshi tracking-wider uppercase text-brand-primary">CAPABILITIES</span>
               <div className="flex flex-col gap-2.5 text-xs text-brand-secondary font-inter font-light">
-                <a href="#services" className="hover:text-brand-accent transition-colors duration-300">Artificial Intelligence</a>
-                <a href="#services" className="hover:text-brand-accent transition-colors duration-300">Software Engineering</a>
-                <a href="#services" className="hover:text-brand-accent transition-colors duration-300">Cloud Architectures</a>
-                <a href="#services" className="hover:text-brand-accent transition-colors duration-300">Web Platforms</a>
+                <a href="/#services" className="hover:text-brand-accent transition-colors duration-300">Artificial Intelligence</a>
+                <a href="/#services" className="hover:text-brand-accent transition-colors duration-300">Software Engineering</a>
+                <a href="/#services" className="hover:text-brand-accent transition-colors duration-300">Cloud Architectures</a>
+                <a href="/#services" className="hover:text-brand-accent transition-colors duration-300">Web Platforms</a>
               </div>
             </div>
 
@@ -147,10 +147,10 @@ export default function Footer() {
             <div className="flex flex-col gap-4">
               <span className="text-[10px] font-bold font-satoshi tracking-wider uppercase text-brand-primary">COMPANY</span>
               <div className="flex flex-col gap-2.5 text-xs text-brand-secondary font-inter font-light">
-                <a href="#about" className="hover:text-brand-accent transition-colors duration-300">About Us</a>
-                <a href="#products" className="hover:text-brand-accent transition-colors duration-300">Featured Products</a>
-                <a href="#process" className="hover:text-brand-accent transition-colors duration-300">Timeline Process</a>
-                <a href="#why-us" className="hover:text-brand-accent transition-colors duration-300">Why Quilonix</a>
+                <a href="/#about" className="hover:text-brand-accent transition-colors duration-300">About Us</a>
+                <Link href="/projects" className="hover:text-brand-accent transition-colors duration-300">Projects</Link>
+                <Link href="/blog" className="hover:text-brand-accent transition-colors duration-300">Blog / News</Link>
+                <a href="/#why-us" className="hover:text-brand-accent transition-colors duration-300">Why Quilonix</a>
               </div>
             </div>
 

@@ -9,12 +9,12 @@ import { cn } from "@/utils/cn";
 import { useTheme } from "@/components/providers/ThemeContext";
 
 const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Products", href: "#products" },
-  { label: "Process", href: "#process" },
-  { label: "Why Us", href: "#why-us" },
-  { label: "FAQ", href: "#faq" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/#services" },
+  { label: "Products", href: "/#products" },
+  { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/#faq" },
 ];
 
 export default function Header() {
@@ -45,7 +45,7 @@ export default function Header() {
       { threshold: 0.25, rootMargin: "-80px 0px -40% 0px" }
     );
 
-    const sections = NAV_LINKS.map(link => document.getElementById(link.href.slice(1)));
+    const sections = NAV_LINKS.filter(link => link.href.startsWith('/#')).map(link => document.getElementById(link.href.slice(2)));
     sections.forEach(sec => sec && observer.observe(sec));
 
     return () => {
@@ -54,9 +54,21 @@ export default function Header() {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/blog") || href.startsWith("/projects") || href === "/terms" || href === "/privacy") {
+      // Let standard Next.js routing or browser handle it
+      return; 
+    }
+    
+    if (window.location.pathname !== "/") {
+      // If we are not on the homepage, let the browser navigate to /#section
+      return;
+    }
+
     e.preventDefault();
     setMobileMenuOpen(false);
-    const target = document.querySelector(href);
+    // If we are on homepage, smooth scroll
+    const targetId = href.startsWith("/#") ? href.slice(1) : href;
+    const target = document.querySelector(targetId);
     if (target) {
       target.scrollIntoView({ behavior: "smooth" });
     }
@@ -103,13 +115,13 @@ export default function Header() {
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className={cn(
                   "font-satoshi text-sm tracking-wide transition-colors duration-300 relative py-1 focus-visible:outline-none focus-visible:text-brand-accent",
-                  activeSection === link.href.slice(1)
+                  activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1))
                     ? "text-brand-accent font-semibold"
                     : "text-brand-secondary hover:text-brand-primary"
                 )}
               >
                 {link.label}
-                {activeSection === link.href.slice(1) && (
+                {activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1)) && (
                   <motion.span
                     layoutId="activeIndicator"
                     className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-accent"
@@ -183,7 +195,7 @@ export default function Header() {
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={cn(
                     "font-satoshi text-2xl font-medium tracking-wide",
-                    activeSection === link.href.slice(1)
+                    activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1))
                       ? "text-brand-accent"
                       : "text-brand-primary"
                   )}
