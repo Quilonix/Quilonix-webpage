@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://quilonix.com/sitemap.xml",
+    sitemap: "https://www.quilonix.in/sitemap.xml",
   };
 }

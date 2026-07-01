@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   ],
   creator: "Quilonix",
   publisher: "Quilonix",
-  metadataBase: new URL("https://quilonix.com"),
+  metadataBase: new URL("https://www.quilonix.in"),
   alternates: {
     canonical: "/",
   },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Quilonix | Intelligent Software, Cloud & AI Systems",
     description: "Discover engineering excellence. Quilonix designs premium intelligent software, AI systems, cloud solutions, and custom digital products for the global stage.",
-    url: "https://quilonix.com",
+    url: "https://www.quilonix.in",
     siteName: "Quilonix",
     locale: "en_US",
     type: "website",
