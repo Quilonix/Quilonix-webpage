@@ -5,6 +5,8 @@ import Footer from "@/components/sections/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = getMdxFiles("blog");
   return posts.map((post) => ({
@@ -12,8 +14,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getMdxFileBySlug("blog", params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = getMdxFileBySlug("blog", resolvedParams.slug);
   if (!post) return {};
   return {
     title: `${post.title} | Quilonix Blog`,
@@ -21,8 +24,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = getMdxFileBySlug("blog", params.slug);
+export default async function BlogPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = getMdxFileBySlug("blog", resolvedParams.slug);
 
   if (!post) {
     return notFound();

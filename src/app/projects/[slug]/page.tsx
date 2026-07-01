@@ -5,6 +5,8 @@ import Footer from "@/components/sections/Footer";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 
+export const dynamicParams = false;
+
 export async function generateStaticParams() {
   const posts = getMdxFiles("projects");
   return posts.map((post) => ({
@@ -12,8 +14,9 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getMdxFileBySlug("projects", params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = getMdxFileBySlug("projects", resolvedParams.slug);
   if (!post) return {};
   return {
     title: `${post.title} | Quilonix Projects`,
@@ -21,8 +24,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default function ProjectPost({ params }: { params: { slug: string } }) {
-  const post = getMdxFileBySlug("projects", params.slug);
+export default async function ProjectPost({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params;
+  const post = getMdxFileBySlug("projects", resolvedParams.slug);
 
   if (!post) {
     return notFound();
