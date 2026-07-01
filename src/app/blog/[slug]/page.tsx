@@ -70,7 +70,7 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
           </div>
         </header>
 
-        <article className="prose prose-lg dark:prose-invert prose-headings:font-satoshi max-w-none prose-a:text-amber-700 hover:prose-a:text-amber-800 prose-img:rounded-2xl prose-img:border prose-img:border-brand-border prose-pre:border prose-pre:border-brand-border">
+        <article className="prose prose-lg dark:prose-invert prose-headings:font-satoshi prose-headings:text-brand-primary prose-p:text-brand-secondary prose-strong:text-brand-primary prose-ul:text-brand-secondary prose-ol:text-brand-secondary prose-li:text-brand-secondary max-w-none prose-a:text-amber-700 hover:prose-a:text-amber-800 prose-img:rounded-2xl prose-img:border prose-img:border-brand-border prose-pre:border prose-pre:border-brand-border">
           <MDXRemote source={post.content} />
         </article>
       </main>
