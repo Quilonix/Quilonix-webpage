@@ -16,8 +16,8 @@ export const metadata: Metadata = {
   description: "Quilonix is a premium technology company building intelligent software, AI systems, digital products, cloud solutions, and future technologies. Discover our engineering excellence.",
   keywords: ["Software Development", "AI Systems", "Cloud Architecture", "Next.js", "TypeScript", "Python", "Rust", "Enterprise Software", "Digital Products", "Web Applications"],
   authors: [
-    { name: "Manvanth Gowda M" },
-    { name: "Mithun Gowda B" }
+    { name: "Manvanth Gowda M", url: "https://www.linkedin.com/in/manvanth-gowda" },
+    { name: "Mithun Gowda B", url: "https://www.linkedin.com/in/mithun-gowda" }
   ],
   creator: "Quilonix",
   publisher: "Quilonix",
@@ -86,10 +86,14 @@ export default function RootLayout({
                 {
                   "@type": "Person",
                   name: "Manvanth Gowda M",
+                  url: "https://www.linkedin.com/in/manvanth-gowda",
+                  sameAs: "https://www.linkedin.com/in/manvanth-gowda"
                 },
                 {
                   "@type": "Person",
                   name: "Mithun Gowda B",
+                  url: "https://www.linkedin.com/in/mithun-gowda",
+                  sameAs: "https://www.linkedin.com/in/mithun-gowda"
                 },
               ],
               sameAs: [
