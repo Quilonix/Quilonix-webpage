@@ -9,6 +9,7 @@ import { cn } from "@/utils/cn";
 import { useTheme } from "@/components/providers/ThemeContext";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
   { label: "Services", href: "/#services" },
   { label: "Products", href: "/#products" },
@@ -54,7 +55,7 @@ export default function Header() {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href.startsWith("/blog") || href.startsWith("/projects") || href === "/terms" || href === "/privacy") {
+    if (href === "/" || href.startsWith("/blog") || href.startsWith("/projects") || href === "/terms" || href === "/privacy") {
       // Let standard Next.js routing or browser handle it
       return; 
     }
