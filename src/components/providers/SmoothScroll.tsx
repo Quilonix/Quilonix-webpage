@@ -19,9 +19,9 @@ export default function SmoothScrollProvider({
       gestureOrientation: "vertical",
       smoothWheel: true,
       wheelMultiplier: 1.1, // optimized desktop feel
-      smoothTouch: true, // explicitly enable Lenis on mobile/touch screens
+      syncTouch: true, // explicitly enable Lenis on mobile/touch screens
       touchMultiplier: 2.2, // increased multiplier so mobile users don't feel "heavy" scrolling
-      touchInertiaMultiplier: 1.5, // buttery inertia release on mobile
+      touchInertiaExponent: 1.5, // buttery inertia release on mobile
     });
 
     lenisRef.current = lenis;
