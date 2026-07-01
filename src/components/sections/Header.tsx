@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Menu, X, ArrowUpRight, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
 import { cn } from "@/utils/cn";
 import { useTheme } from "@/components/providers/ThemeContext";
@@ -20,9 +21,26 @@ const NAV_LINKS = [
 
 export default function Header() {
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+
+  const isActiveLink = (href: string) => {
+    if (href === "/") {
+      return pathname === "/" && activeSection === "";
+    }
+    if (href.startsWith("/#")) {
+      return pathname === "/" && activeSection === href.slice(2);
+    }
+    if (href === "/projects") {
+      return pathname.startsWith("/projects");
+    }
+    if (href === "/blog") {
+      return pathname.startsWith("/blog");
+    }
+    return false;
+  };
 
   // Handle scroll detection for glass header
   useEffect(() => {
@@ -116,13 +134,13 @@ export default function Header() {
                 onClick={(e) => handleLinkClick(e, link.href)}
                 className={cn(
                   "font-satoshi text-sm tracking-wide transition-colors duration-300 relative py-1 focus-visible:outline-none focus-visible:text-brand-accent",
-                  activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1))
+                  isActiveLink(link.href)
                     ? "text-brand-accent font-semibold"
                     : "text-brand-secondary hover:text-brand-primary"
                 )}
               >
                 {link.label}
-                {activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1)) && (
+                {isActiveLink(link.href) && (
                   <motion.span
                     layoutId="activeIndicator"
                     className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-brand-accent"
@@ -196,7 +214,7 @@ export default function Header() {
                   onClick={(e) => handleLinkClick(e, link.href)}
                   className={cn(
                     "font-satoshi text-2xl font-medium tracking-wide",
-                    activeSection === (link.href.startsWith("/#") ? link.href.slice(2) : link.href.slice(1))
+                    isActiveLink(link.href)
                       ? "text-brand-accent"
                       : "text-brand-primary"
                   )}
