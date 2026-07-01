@@ -70,6 +70,37 @@ export default function RootLayout({
       className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "Quilonix",
+              url: "https://www.quilonix.in",
+              logo: "https://www.quilonix.in/logos/kiro.png", // using an existing logo as placeholder if main logo isn't at /logo.png
+              description:
+                "Quilonix is a premium technology company building intelligent software, AI systems, digital products, and cloud solutions.",
+              founders: [
+                {
+                  "@type": "Person",
+                  name: "Manvanth Gowda M",
+                },
+                {
+                  "@type": "Person",
+                  name: "Mithun Gowda B",
+                },
+              ],
+              sameAs: [
+                "https://github.com/Quilonix",
+                // "https://www.linkedin.com/company/quilonix", // Add real social links later
+                // "https://twitter.com/Quilonix"
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-brand-bg text-brand-primary">
         <ThemeProvider>
           <SmoothScrollProvider>
