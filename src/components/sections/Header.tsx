@@ -73,7 +73,7 @@ export default function Header() {
   }, []);
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    if (href === "/" || href.startsWith("/blog") || href.startsWith("/projects") || href === "/terms" || href === "/privacy") {
+    if (href === "/" || href.startsWith("/blog") || href.startsWith("/projects") || href.startsWith("/terms") || href.startsWith("/privacy")) {
       // Let standard Next.js routing or browser handle it
       return; 
     }

@@ -19,9 +19,42 @@ export default function PrivacyPage() {
         <h1 className="font-general font-semibold text-4xl md:text-6xl text-brand-primary mb-6 tracking-tight">
           Privacy Policy
         </h1>
-        <p className="font-mono text-xs text-brand-secondary/60 mb-16 uppercase tracking-wider">
+        <p className="font-mono text-xs text-brand-secondary/60 mb-8 uppercase tracking-wider">
           Last updated: June 30, 2026
         </p>
+
+        {/* Product-Specific Policies */}
+        <div className="mb-16 p-6 rounded-2xl bg-brand-surface border border-brand-border">
+          <h2 className="font-satoshi font-bold text-xs text-brand-secondary uppercase tracking-wider mb-4">
+            App-Specific Privacy Policies
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            <Link
+              href="/privacy/compilex"
+              className="p-4 rounded-xl border border-brand-border hover:border-brand-primary/40 transition-all duration-300 group"
+            >
+              <span className="font-medium text-brand-primary group-hover:text-brand-accent flex items-center justify-between mb-1">
+                <span>CompileX</span>
+                <span className="text-xs transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
+              </span>
+              <span className="text-xs text-brand-secondary">
+                Offline code editor for Android
+              </span>
+            </Link>
+            <Link
+              href="/privacy/refocus"
+              className="p-4 rounded-xl border border-brand-border hover:border-brand-primary/40 transition-all duration-300 group"
+            >
+              <span className="font-medium text-brand-primary group-hover:text-brand-accent flex items-center justify-between mb-1">
+                <span>Refocus</span>
+                <span className="text-xs transition-transform duration-300 group-hover:translate-x-0.5">&rarr;</span>
+              </span>
+              <span className="text-xs text-brand-secondary">
+                Screen time &amp; distraction blocker
+              </span>
+            </Link>
+          </div>
+        </div>
 
         <div className="space-y-12 text-brand-secondary/90 leading-relaxed font-light text-sm md:text-base">
           <section className="space-y-4">

@@ -5,7 +5,7 @@
 **Application Name:** Refocus (Refocus Again)  
 **Package Name:** `com.refocusagain.refocus_again`  
 **Developer / Maintainer:** Nevil Anson Dsouza / CoLeX Open Source  
-**Contact Email:** nevil06@github.com / refocus.app.contact@gmail.com  
+**Contact Email:** dsouzanevil377@gmail.com
 
 ---
 
@@ -171,4 +171,4 @@ These Terms shall be governed and construed in accordance with the laws of India
 For any questions regarding this Privacy Policy or these Terms, please contact:
 * **Developer:** Nevil Anson Dsouza
 * **GitHub Repository:** [https://github.com/nevil06/refocus](https://github.com/nevil06/refocus)
-* **Direct Email:** nevil06@github.com / refocus.app.contact@gmail.com
+* **Direct Email:** dsouzanevil377@gmail.com
